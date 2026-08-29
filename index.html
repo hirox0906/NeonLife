@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="ネオン風の演出で楽しむコンウェイのライフゲーム"
+    />
+    <title>NEON LIFE OVERDRIVE</title>
+    <meta name="theme-color" content="#03040c" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <main>
+      <canvas id="game" aria-label="セル・オートマトンの盤面"></canvas>
+
+      <header class="top-bar">
+        <div class="brand">
+          <h1>NEON LIFE <span>OVERDRIVE</span></h1>
+          <p>CONWAY COMBAT SIMULATOR</p>
+        </div>
+
+        <dl class="stats" aria-label="ゲームの状態">
+          <div class="stat">
+            <dd id="generation">0000</dd>
+            <dt>GEN</dt>
+          </div>
+          <div class="stat">
+            <dd id="population">0000</dd>
+            <dt id="population-label">CELLS</dt>
+          </div>
+          <div class="stat">
+            <dd id="fps">60</dd>
+            <dt>FPS</dt>
+          </div>
+        </dl>
+      </header>
+
+      <div id="toast" class="toast" aria-live="polite">OVERDRIVE!</div>
+
+      <section class="control-panel" aria-label="シミュレーションの操作">
+        <div class="model-row">
+          <label class="model-control" for="model">
+            MODEL
+            <select id="model">
+              <option value="conway">Conway's Life</option>
+              <option value="wator">Wa-Tor</option>
+              <option value="highlife">HighLife</option>
+              <option value="seeds">Seeds</option>
+              <option value="brians-brain">Brian's Brain</option>
+              <option value="rock-paper-scissors">Rock Paper Scissors</option>
+            </select>
+          </label>
+          <label class="model-control" for="brush">
+            BRUSH
+            <select id="brush"></select>
+          </label>
+          <p id="model-description" class="model-description"></p>
+        </div>
+
+        <div class="model-settings-row">
+          <div
+            id="model-parameters"
+            class="model-parameters"
+            aria-label="選択中のモデルのパラメータ"
+          ></div>
+          <button id="reset-settings" class="reset-button" type="button">
+            RESET SETTINGS
+          </button>
+        </div>
+
+        <div class="control-row">
+          <button class="button active" id="run" type="button" aria-pressed="true">
+            ▶ RUN
+          </button>
+          <button class="button" id="step" type="button">STEP</button>
+          <button class="button hot" id="random" type="button">RANDOM BURST</button>
+          <button class="button" id="clear" type="button">CLEAR</button>
+          <span id="paint-hint" class="hint">
+            SELECT BRUSH ・ DRAG TO PAINT ・ RIGHT DRAG TO ERASE
+          </span>
+        </div>
+
+        <div class="control-row">
+          <label class="range-control">
+            SPEED
+            <input id="speed" type="range" min="1" max="30" value="12" />
+            <output id="speed-value" for="speed">12</output>
+          </label>
+          <label class="range-control">
+            CELL
+            <input id="cell-size" type="range" min="4" max="14" value="6" />
+            <output id="cell-size-value" for="cell-size">6</output>
+          </label>
+          <label class="range-control">
+            CHAOS
+            <input id="chaos" type="range" min="8" max="45" value="24" />
+            <output id="chaos-value" for="chaos">24%</output>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
